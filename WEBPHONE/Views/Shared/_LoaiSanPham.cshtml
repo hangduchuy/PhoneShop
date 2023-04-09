@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ShopConnection.LoaiSanPham>
+<div class="nav-item dropdown">
+    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Product Type</a> @*M.Product la nha san xuat*@
+    <div class="dropdown-menu">
+        <div class="dropdown-inner">
+            <ul class="list-unstyled">
+                @foreach (var item in Model)
+                {
+                    <li><a href="@Url.Action("Index", "LoaiSanPham", new { id=@item.MaLoaiSP})">@item.TenLoaiSP</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

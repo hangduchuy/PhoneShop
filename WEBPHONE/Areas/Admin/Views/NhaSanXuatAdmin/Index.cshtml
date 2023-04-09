@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ShopConnection.NhaSanXuat>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+
+<style>
+    th, td{
+    text-align:center;
+}
+</style>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Quản lý Nhà Sản Xuất</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Mã Nhà Sản Xuất</th>
+                            <th>Tên Nhà Sản Xuất</th>
+                            <th>Tình Trạng</th>
+                            <th colspan="2">
+                                <a href="@Url.Action("Create", "NhaSanXuatAdmin")"><img src="~/assets/images/AddNSX.png" /></a>
+                            </th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.MaNSX</td>
+                            <td>@item.TenNSX</td>
+                            <td>@item.TinhTrang</td>
+                            <th><a href="@Url.Action("Edit","NhaSanXuatAdmin", new {id = item.MaNSX})"><img src="~/assets/images/edit.png" /></a></th>
+                            <th><a href="@Url.Action("TempDelete","NhaSanXuatAdmin", new {id = item.MaNSX})"><img src="~/assets/images/Delete.png" /></a></th>
+                        </tr>
+                    }      
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+
+
+

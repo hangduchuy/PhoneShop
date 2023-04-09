@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ShopConnection.SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<section id="top-sale">
+    <div class="container py-5">
+        <h4 class="font-size-20">Sản phẩm</h4>
+        <hr>
+        <!-- owl carousel -->
+        <div class="owl-carousel owl-theme">
+            @foreach (var item in Model)
+            {
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product" style="width:200px;height:350px">
+                        <a href="@Url.Action("Details", "Shop", new {  id= @item.MaSP})"><img src="~/assets/assets/products/@item.HinhChinh" alt="product1" class="img-fluid"></a>
+                        <div class="text-center">
+                            <h6>@item.TenSp</h6>
+                            <div class="rating text-warning font-size-12">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                            </div>
+                            <div class="price py-2">
+                                <span>$@item.Gia</span>
+                            </div>
+                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        <!-- !owl carousel -->
+
+    </div>
+</section>
+<!-- !Top Sale -->

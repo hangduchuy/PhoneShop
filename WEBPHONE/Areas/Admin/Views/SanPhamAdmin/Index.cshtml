@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ShopConnection.SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+<style>
+    th, td {
+        text-align: center;
+    }
+</style>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Quản lý Sản Phẩm</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered" id="dataTable" style="width:100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Mã Sản Phẩm</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Tình Trạng</th>
+                            <th>Mã Loại Sản Phẩm</th>
+                            <th>Mã Nhà Sản Xuất</th>
+                            <th>Cấu Hình</th>
+                            <th>Hình Chính</th>
+                            <th>Số lượng đã bán</th>
+                            <th>Lượt Xem</th>
+                            <th>Giá</th>
+                            <th>Ghi Chú</th>
+                            <th colspan="2">
+                                <a href="@Url.Action("Create", "SanPhamAdmin")"><img src="~/assets/images/AddNSX.png" /></a>
+                            </th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                        <td>@(item.MaSP ?? "")</td>
+                        <td>@(item.TenSp ?? "")</td>
+                            <td>@(item.TinhTrang ?? 0)</td>
+                            <td>@(item.MaLoaiSP ?? "")</td>
+                            <td>@(item.MaNSX ?? "")</td>
+                            <td>@(item.CauHinh ?? "")</td>
+                            <td><img src="~/assets/assets/products/@item.HinhChinh" alt="Chưa có hình" style="width:50px; height:80px" /></td>
+                            <td>@(item.SoLuongDaBan ?? 0)</td>
+                            <td>@(item.LuotXem ?? 0)</td>
+                            <td>@(item.Gia ?? 0)</td>
+                            <td>@(item.GhiChu ?? "")</td>
+                        <th><a href="@Url.Action("Edit","SanPhamAdmin", new {id = item.MaSP})"><img src="~/assets/images/edit.png" /></a></th>
+                            <th><a href="@Url.Action("Delete","SanPhamAdmin", new {id = item.MaSP})"><img src="~/assets/images/Delete.png"
+                        /></a></th>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->

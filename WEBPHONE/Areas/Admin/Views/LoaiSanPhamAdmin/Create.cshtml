@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+
+<h2>Create</h2>
+<style>
+    input[type=text] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+</style>
+<body>
+    <h3>Tạo Loại Sản Phẩm</h3>
+
+    <div>
+        @using (Html.BeginForm("Create", "LoaiSanPhamAdmin", FormMethod.Post, new { @style = "width: 50%; margin: auto" }))
+        {
+            <label for="fname">Mã Loại Sản Phẩm</label>
+            <input type="text" id="fname" name="MaLoaiSP" placeholder="Nhập Loại Sản Phẩm..." required>
+
+            <label for="lname">Tên Loại Sản Phẩm</label>
+            <input type="text" id="lname" name="TenLoaiSP" placeholder="Nhập Tên Loại Sản Phẩm..." required>
+
+            <label for="country">Tình Trạng</label>
+            <select id="country" name="TinhTrang" style="width: 20%" required>
+                <option value="0">Chưa khóa</option>
+                <option value="1">Đã khóa</option>
+            </select>
+
+            <input type="submit" value="Thêm">
+        }
+
+
+    </div>
+</body>
+

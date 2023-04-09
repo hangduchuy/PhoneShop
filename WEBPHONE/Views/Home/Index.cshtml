@@ -1,0 +1,611 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- start #main-site -->
+<main id="main-site">
+    <!-- Owl-carousel -->
+    <section id="banner-area">
+        <div class="owl-carousel owl-theme">
+            <div class="item">
+                <img src="~/assets/assets/banner/Banner0.png" alt="Banner0">
+            </div>
+            <div class="item">
+                <img src="~/assets/assets/banner/Banner1.png" alt="Banner1">
+            </div>
+            <div class="item">
+                <img src="~/assets/assets/banner/Banner2.png" alt="Banner2">
+            </div>
+            <div class="item">
+                <img src="~/assets/assets/banner/Banner3.png" alt="Banner3">
+            </div>
+        </div>
+    </section>
+    <!-- !Owl-carousel -->
+    <!-- Top Sale -->
+    <section id="top-sale">
+        <div class="container py-5">
+            <h4 class="font-size-20">Top Sale</h4>
+            <hr>
+            <!-- owl carousel -->
+            <div class="owl-carousel owl-theme">
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product">
+                        <a href="@Url.Action("Details","Shop",new {  id= "SP01"})"><img src="~/assets/assets/products/1.png" alt="product1" class="img-fluid"></a>
+                        <div class="text-center">
+                            <h6>Samsung Galaxy 10</h6>
+                            <div class="rating text-warning font-size-12">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                            </div>
+                            <div class="price py-2">
+                                <span>$152</span>
+                            </div>
+                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product">
+                        <a href="Details.cshtml"><img src="~/assets/assets/products/2.png" alt="product1" class="img-fluid"></a>
+                        <div class="text-center">
+                            <h6>Readme Note 7</h6>
+                            <div class="rating text-warning font-size-12">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                            </div>
+                            <div class="price py-2">
+                                <span>$152</span>
+                            </div>
+                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product">
+                        <a href="@Url.Action("Details",new {  id= "SP03"})"><img src="~/assets/assets/products/3.png" alt="product1" class="img-fluid"></a>
+                        <div class="text-center">
+                            <h6>Readme Note 7</h6>
+                            <div class="rating text-warning font-size-12">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                            </div>
+                            <div class="price py-2">
+                                <span>$152</span>
+                            </div>
+                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product">
+                        <a href="@Url.Action("Details",new {  id= "SP04"})"><img src="~/assets/assets/products/4.png" alt="product1" class="img-fluid"></a>
+                        <div class="text-center">
+                            <h6>Samsung Galaxy 10</h6>
+                            <div class="rating text-warning font-size-12">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                            </div>
+                            <div class="price py-2">
+                                <span>$152</span>
+                            </div>
+                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product">
+                        <a href="@Url.Action("Details",new {  id= "SP05"})"><img src="~/assets/assets/products/5.png" alt="product1" class="img-fluid"></a>
+                        <div class="text-center">
+                            <h6>Readme Note 7</h6>
+                            <div class="rating text-warning font-size-12">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                            </div>
+                            <div class="price py-2">
+                                <span>$152</span>
+                            </div>
+                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product">
+                        <div class="d-flex flex-column">
+                            <a href="@Url.Action("Details",new {  id= "SP06"})"><img src="~/assets/assets/products/6.png" class="img-fluid" alt="pro1"></a>
+                            <div class="text-center">
+                                <h6>Readme Note 7</h6>
+                                <div class="rating text-warning font-size-12">
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="far fa-star"></i></span>
+                                </div>
+                                <div class="price py-2">
+                                    <span>$122</span>
+                                </div>
+                                <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product">
+                        <div class="d-flex flex-column">
+                            <a href="@Url.Action("Details",new {  id= "SP07"})"><img src="~/assets/assets/products/7.png" class="img-fluid" alt="pro1"></a>
+                            <div class="text-center">
+                                <h6>Readme Note 7</h6>
+                                <div class="rating text-warning font-size-12">
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="far fa-star"></i></span>
+                                </div>
+                                <div class="price py-2">
+                                    <span>$122</span>
+                                </div>
+                                <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- !owl carousel -->
+        </div>
+    </section>
+    <!-- !Top Sale -->
+    <!-- Special Price -->
+    <section id="special-price">
+        <div class="container">
+            <h4 class="font-size-20">Special Price</h4>
+            <div id="filters" class="button-group text-end  font-size-16">
+                <button class="btn is-checked" data-filter="*">All Brand</button>
+                <button class="btn" data-filter=".Apple">Apple</button>
+                <button class="btn" data-filter=".Samsung">Samsung</button>
+                <button class="btn" data-filter=".Redmi">Redmi</button>
+            </div>
+            <div class="product-filter">
+                <div class="product-filter-item Apple border">
+                    <div class="item py-2" style="width: 200px;">
+                        <div class="product">
+                            <a href="@Url.Action("Details",new {  id= "SP07"})"><img src="~/assets/assets/products/7.png" alt="product1" class="img-fluid"></a>
+                            <div class="text-center">
+                                <h6>Apple iPhone 10</h6>
+                                <div class="rating text-warning font-size-12">
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="far fa-star"></i></span>
+                                </div>
+                                <div class="price py-2">
+                                    <span>$152</span>
+                                </div>
+                                <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-filter-item Samsung border">
+                    <div class="item py-2" style="width: 200px;">
+                        <div class="product">
+                            <a href="@Url.Action("Details",new {  id= "SP08"})"><img src="~/assets/assets/products/8.png" alt="product1" class="img-fluid"></a>
+                            <div class="text-center">
+                                <h6>Samsung Galaxy 10</h6>
+                                <div class="rating text-warning font-size-12">
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="far fa-star"></i></span>
+                                </div>
+                                <div class="price py-2">
+                                    <span>$152</span>
+                                </div>
+                                <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-filter-item Redmi border">
+                    <div class="item py-2" style="width: 200px;">
+                        <div class="product">
+                            <a href="@Url.Action("Details",new {  id= "SP09"})"><img src="~/assets/assets/products/9.png" alt="product1" class="img-fluid"></a>
+                            <div class="text-center">
+                                <h6>Redmi Note 7 Pro</h6>
+                                <div class="rating text-warning font-size-12">
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="far fa-star"></i></span>
+                                </div>
+                                <div class="price py-2">
+                                    <span>$152</span>
+                                </div>
+                                <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-filter-item Apple border">
+                    <div class="item py-2" style="width: 200px;">
+                        <div class="product">
+                            <a href="@Url.Action("Details",new {  id= "SP010"})"><img src="~/assets/assets/products/10.png" alt="product1" class="img-fluid"></a>
+                            <div class="text-center">
+                                <h6>Apple iPhone 10</h6>
+                                <div class="rating text-warning font-size-12">
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="far fa-star"></i></span>
+                                </div>
+                                <div class="price py-2">
+                                    <span>$152</span>
+                                </div>
+                                <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-filter-item Samsung border">
+                    <div class="item py-2" style="width: 200px;">
+                        <div class="product">
+                            <a href="@Url.Action("Details",new {  id= "SP10"})"><img src="~/assets/assets/products/10.png" alt="product1" class="img-fluid"></a>
+                            <div class="text-center">
+                                <h6>Samsung Galaxy 10</h6>
+                                <div class="rating text-warning font-size-12">
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="far fa-star"></i></span>
+                                </div>
+                                <div class="price py-2">
+                                    <span>$152</span>
+                                </div>
+                                <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-filter-item Redmi border">
+                    <div class="item py-2" style="width: 200px;">
+                        <div class="product">
+                            <div class="d-flex flex-column">
+                                <a href="@Url.Action("Details",new {  id= "SP11"})"><img src="~/assets/assets/products/11.png" class="img-fluid" alt="pro1"></a>
+                                <div class="text-center">
+                                    <h6>Redmi Note 7 Pro</h6>
+                                    <div class="rating text-warning font-size-12">
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="far fa-star"></i></span>
+                                    </div>
+                                    <div class="price py-2">
+                                        <span>$152</span>
+                                    </div>
+                                    <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-filter-item Redmi border">
+                    <div class="item py-2" style="width: 200px;">
+                        <div class="product">
+                            <div class="d-flex flex-column">
+                                <a href="@Url.Action("Details",new {  id= "SP12"})"><img src="~/assets/assets/products/12.png" class="img-fluid" alt="pro1"></a>
+                                <div class="text-center">
+                                    <h6>Redmi Note 7 Pro</h6>
+                                    <div class="rating text-warning font-size-12">
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="far fa-star"></i></span>
+                                    </div>
+                                    <div class="price py-2">
+                                        <span>$152</span>
+                                    </div>
+                                    <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-filter-item Redmi border">
+                    <div class="item py-2" style="width: 200px;">
+                        <div class="product">
+                            <div class="d-flex flex-column">
+                                <a href="@Url.Action("Details",new {  id= "SP13"})"><img src="~/assets/assets/products/13.png" class="img-fluid" alt="pro1"></a>
+                                <div class="text-center">
+                                    <h6>Redmi Note 7 Pro</h6>
+                                    <div class="rating text-warning font-size-12">
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="far fa-star"></i></span>
+                                    </div>
+                                    <div class="price py-2">
+                                        <span>$152</span>
+                                    </div>
+                                    <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-filter-item Redmi border">
+                    <div class="item py-2" style="width: 200px;">
+                        <div class="product">
+                            <div class="d-flex flex-column">
+                                <a href="@Url.Action("Details",new {  id= "SP14"})"><img src="~/assets/assets/products/14.png" class="img-fluid" alt="pro1"></a>
+                                <div class="text-center">
+                                    <h6>Redmi Note 7 Pro</h6>
+                                    <div class="rating text-warning font-size-12">
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="far fa-star"></i></span>
+                                    </div>
+                                    <div class="price py-2">
+                                        <span>$152</span>
+                                    </div>
+                                    <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-filter-item Apple border">
+                    <div class="item py-2" style="width: 200px;">
+                        <div class="product">
+                            <div class="d-flex flex-column">
+                                <a href="@Url.Action("Details",new {  id= "SP15"})"><img src="~/assets/assets/products/15.png" class="img-fluid" alt="pro1"></a>
+                                <div class="text-center">
+                                    <h6>Apple iPhone 10</h6>
+                                    <div class="rating text-warning font-size-12">
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="fas fa-star"></i></span>
+                                        <span><i class="far fa-star"></i></span>
+                                    </div>
+                                    <div class="price py-2">
+                                        <span>$252</span>
+                                    </div>
+                                    <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- !Special Price -->
+    <!-- Banner Ads    -->
+    <section id="banner_adds">
+        <div class="container py-5 text-center">
+            <img src="~/assets/assets/discount.jpg" alt="banner1" class="img-fluid px-3 py-2">
+            <img src="~/assets/assets/freeship.jpg" alt="banner1" class="img-fluid px-3 py-2">
+        </div>
+    </section>
+    <!-- !Banner Ads    -->
+    <!-- New Phones -->
+    <section id="new-phones">
+        <div class="container">
+            <h4 class="font-size-20">New Phones</h4>
+            <hr>
+            <!-- owl carousel -->
+            <div class="owl-carousel owl-theme">
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product">
+                        <a href="@Url.Action("Details",new {  id= "SP01"})"><img src="~/assets/assets/products/1.png" alt="product1" class="img-fluid"></a>
+                        <div class="text-center">
+                            <h6>Samsung Galaxy 10</h6>
+                            <div class="rating text-warning font-size-12">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                            </div>
+                            <div class="price py-2">
+                                <span>$152</span>
+                            </div>
+                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product">
+                        <a href="@Url.Action("Details",new {  id= "SP02"})"><img src="~/assets/assets/products/2.png" alt="product1" class="img-fluid"></a>
+                        <div class="text-center">
+                            <h6>Readme Note 7</h6>
+                            <div class="rating text-warning font-size-12">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                            </div>
+                            <div class="price py-2">
+                                <span>$152</span>
+                            </div>
+                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product">
+                        <a href="@Url.Action("Details",new {  id= "SP03"})"><img src="~/assets/assets/products/9.png" alt="product1" class="img-fluid"></a>
+                        <div class="text-center">
+                            <h6>Readme Note 7</h6>
+                            <div class="rating text-warning font-size-12">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                            </div>
+                            <div class="price py-2">
+                                <span>$152</span>
+                            </div>
+                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product">
+                        <a href="@Url.Action("Details",new {  id= "SP06"})"><img src="~/assets/assets/products/6.png" alt="product1" class="img-fluid"></a>
+                        <div class="text-center">
+                            <h6>Samsung Galaxy 10</h6>
+                            <div class="rating text-warning font-size-12">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                            </div>
+                            <div class="price py-2">
+                                <span>$152</span>
+                            </div>
+                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product">
+                        <a href="@Url.Action("Details",new {  id= "SP07"})"><img src="~/assets/assets/products/7.png" alt="product1" class="img-fluid"></a>
+                        <div class="text-center">
+                            <h6>Readme Note 7</h6>
+                            <div class="rating text-warning font-size-12">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                            </div>
+                            <div class="price py-2">
+                                <span>$152</span>
+                            </div>
+                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product">
+                        <div class="d-flex flex-column">
+                            <a href="@Url.Action("Details",new {  id= "SP10"})"><img src="~/assets/assets/products/10.png" class="img-fluid" alt="pro1"></a>
+                            <div class="text-center">
+                                <h6>Readme Note 7</h6>
+                                <div class="rating text-warning font-size-12">
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="far fa-star"></i></span>
+                                </div>
+                                <div class="price py-2">
+                                    <span>$122</span>
+                                </div>
+                                <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item py-2 border rounded-2 bg-light">
+                    <div class="product">
+                        <div class="d-flex flex-column">
+                            <a href="@Url.Action("Details",new {  id= "SP08"})"><img src="~/assets/assets/products/8.png" class="img-fluid" alt="pro1"></a>
+                            <div class="text-center">
+                                <h6>Readme Note 7</h6>
+                                <div class="rating text-warning font-size-12">
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="far fa-star"></i></span>
+                                </div>
+                                <div class="price py-2">
+                                    <span>$122</span>
+                                </div>
+                                <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- !owl carousel -->
+        </div>
+    </section>
+    <!-- !New Phones -->
+    <!-- Blogs -->
+    <section id="blogs">
+        <div class="container py-4">
+            <h4 class="font-size-20">CHUỖI MỚI DEAL KHỦNG</h4>
+            <hr>
+            <div class="owl-carousel owl-theme">
+                <div class="item">
+                    <div class="card border-1 me-5">
+                        <h5 class="card-title font-size-16 text-dark text-center mt-1">Táo xịn tết sang - Lì xì 2023 chỉ vàng</h5>
+                        <img src="~/assets/assets/blog/blog1.jpg" class="card-img-top">
+                        <p class="card-text font-size-14 text-black-50 px-2">
+                            Từ ngày 16/12/-31/01 Táo xịn tết sang
+                            giảm đến 11 triệu khi mua iPhone hoặc MacBook tại Topzone, mua iPad giảm 7 triệu, cùng
+                            nhiều khuyến mãi hấp dẫn.
+                        </p>
+                        <a href="#" class="color-second text-start ps-2 mb-2">Xem ngay</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card border-1 me-5">
+                        <h5 class="card-title font-size-16 text-dark text-center mt-1">GIÁNG SINH GIẢM ĐỈNH 50%</h5>
+                        <img src="~/assets/assets/blog/blog2.jpg" class="card-img-top">
+                        <p class="card-text font-size-14 text-black-50 px-2">
+                            SALE SỐC HÀNG LOẠT ĐẾN 50% - DUY NHẤT
+                            TỪ 19 -25/12. MUA NGAY TẠI AVASPORT
+                        </p>
+                        <a href="#" class="color-second text-start ps-2 mb-2">Xem ngay</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card border-1 me-5">
+                        <h5 class="card-title font-size-16 text-dark text-center mt-1">Mùa giáng sinh, sinh lực phải sung giảm đến 30%</h5>
+                        <img src="~/assets/assets/blog/blog3.jpg" class="card-img-top">
+                        <p class="card-text font-size-14 text-black-50 px-2">
+                            Từ ngày 01/12 đến 31/12 mua Yến sào
+                            Win'snest khuyến mãi mua 1 tặng 1. Hàng loạt sản phẩm giảm ngay từ 5% đến 30%
+                        </p>
+                        <a href="#" class="color-second text-start ps-2 mb-2">Xem ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- !Blogs -->
+</main>
+<!-- !start #main-site -->
