@@ -10,6 +10,7 @@ namespace WEBPHONE.Areas.Admin.Controllers
 {
     public class NhaSanXuatAdminController : Controller
     {
+        [Authorize(Roles = "Admin")]
         // GET: Admin/NhaSanXuatAdmin
         public ActionResult Index()
         {
