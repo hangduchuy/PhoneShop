@@ -50,11 +50,11 @@ namespace WEBPHONE.Models.BUSS
         {
             var db = new ShopConnectionDB();
             //Xóa tạm 
-            //db.Update(lsp, id);
+            db.Update(lsp, id);
 
             //Xóa luôn
-            db.Delete<LoaiSanPham>("Where MaLoaiSP = @0", id);
-            db.Save(lsp);
+            //db.Delete<LoaiSanPham>("Where MaLoaiSP = @0", id);
+            //db.Save(lsp);
         }
 
     }

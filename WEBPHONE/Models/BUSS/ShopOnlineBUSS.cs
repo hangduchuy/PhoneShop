@@ -63,5 +63,15 @@ namespace WEBPHONE.Models.BUSS
             }
             return listImageReturn.ElementAt(0).ToString();
         }
+
+        public static void DeleteSP(String id, SanPham sp)
+        {
+            var db = new ShopConnectionDB();
+            
+
+            //Xóa luôn
+            db.Delete<SanPham>("Where MaSP = @0", id);
+            db.Save(sp);
+        }
     }
 }

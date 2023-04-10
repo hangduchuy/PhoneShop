@@ -153,7 +153,7 @@ namespace WEBPHONE.Areas.Admin.Controllers
                 if (hpf.ContentLength > 0)
                 {
                     string fileName = sp.MaSP;
-                    string fullPathWithFileName = "~/assets/assets/products" + fileName.Substring(2) + ".png";
+                    string fullPathWithFileName = "~/assets/assets/products/" + fileName.Substring(2) + ".png";
                     hpf.SaveAs(Server.MapPath(fullPathWithFileName));
                     sp.HinhChinh = sp.MaSP.Substring(2) + ".png";
                 }
@@ -167,7 +167,9 @@ namespace WEBPHONE.Areas.Admin.Controllers
                 if (sp.LuotXem > 10000) { sp.LuotXem = 0; } else { sp.LuotXem = temp.LuotXem; }
                 sp.TinhTrang = temp.TinhTrang;
 
+                ShopOnlineBUSS.UpdateImages(id, sp.HinhChinh);
                 ShopOnlineBUSS.UpdateSP(id, sp);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -184,30 +186,40 @@ namespace WEBPHONE.Areas.Admin.Controllers
 
         // POST: Admin/SanPhamAdmin/Delete/5
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Delete(String id, SanPham sp)
         {
             // TODO: Add delete logic here
             var tam = ShopOnlineBUSS.ChiTiet(id);
             try
             {
-                //if (tam.SoLuongDaBan > 10000)
-                //{
-                //    tam.SoLuongDaBan = 0;
-                //}
-                //if (tam.LuotXem > 10000)
-                //{
-                //    tam.LuotXem = 0;
-                //}
-                //if (tam.TinhTrang == 1)
-                //{
-                //    tam.TinhTrang = 0;
-                //}
-                //else
-                //{
-                //    tam.TinhTrang = 1;
-                //}
+                // TODO: Add delete logic here
+                if (tam.SoLuongDaBan > 10000)
+                {
+                    //reset = 0 
+                    tam.SoLuongDaBan = 0;
+                }
+                if (tam.LuotXem > 10000)
+                {
+                    //reset = 0 
+                    tam.LuotXem = 0;
+                }
+                if (tam.TinhTrang == 1)
+                {
+                    //reset = 0 
+                    tam.TinhTrang = 0;
+                }
+                else
+                {
+                    //reset = 1
+                    tam.TinhTrang = 1;
+                }
 
+                //Xoa luon
+                //ShopOnlineBUSS.DeleteSP(id,sp);
+                //Load lai trang index quan ly
                 ShopOnlineBUSS.UpdateSP(id, tam);
+
                 return RedirectToAction("Index");
             }
             catch

@@ -85,11 +85,11 @@ namespace WEBPHONE.Areas.Admin.Controllers
                 lsp.TinhTrang = "1";
 
                 // Xóa tạm 
-                //LoaiSanPhamBUS.EditLSP(id,lsp);
+                LoaiSanPhamBUS.EditLSP(id,lsp);
                 //
 
                 //Xóa luôn 
-                LoaiSanPhamBUS.DeleteLSP(id, lsp);
+                //LoaiSanPhamBUS.DeleteLSP(id, lsp);
                 //
 
                 return RedirectToAction("Index");
