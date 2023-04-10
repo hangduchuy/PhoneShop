@@ -102,9 +102,9 @@ namespace WEBPHONE.Areas.Admin.Controllers
                 if (hpf.ContentLength > 0)
                 {
                     string fileName = sp.MaSP;
-                    string fullPathWithFileName = "~/assets/img" + fileName + ".png";
+                    string fullPathWithFileName = "~/assets/assets/products/" + fileName.Substring(2) + ".png";
                     hpf.SaveAs(Server.MapPath(fullPathWithFileName));
-                    sp.HinhChinh = sp.MaSP + ".png";
+                    sp.HinhChinh = sp.MaSP.Substring(2) + ".png";
 
                 }
                 sp.TinhTrang = 0;
@@ -153,9 +153,9 @@ namespace WEBPHONE.Areas.Admin.Controllers
                 if (hpf.ContentLength > 0)
                 {
                     string fileName = sp.MaSP;
-                    string fullPathWithFileName = "~/assets/img" + fileName + ".png";
+                    string fullPathWithFileName = "~/assets/assets/products" + fileName.Substring(2) + ".png";
                     hpf.SaveAs(Server.MapPath(fullPathWithFileName));
-                    sp.HinhChinh = sp.MaSP + ".png";
+                    sp.HinhChinh = sp.MaSP.Substring(2) + ".png";
                 }
                 else { sp.HinhChinh = temp.HinhChinh; }
                 //TODO: Add update logic here
