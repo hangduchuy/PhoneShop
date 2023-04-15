@@ -12,17 +12,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <img src="~/assets/assets/products/@Model.HinhChinh" alt="product" class="img-fluid">
-                    <div class="pt-4 font-size-16">
-                        <div class="col">
-                            <button type="submit" class="btn btn-success form-control"
-                                    onclick="alert('This is demo only')">
-                                Proceed to Buy
-                            </button>
-                        </div>
-                        <div class="col">
-                            <button type="submit" class="btn btn-warning form-control">Add to Cart</button>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="col-sm-6 py-5">
                     <h5 class="font-size-20">@Model.TenSp</h5>
@@ -44,26 +34,32 @@
                     <!--- product price -->
                     <table class="my-3 font-size-14">
                         <tr>
-                            <td>M.R.P:</td>
-                            <td><strike>@Model.Gia VNĐ</strike></td>
-                        </tr>
-                        <tr>
-                            <td>Deal Price:</td>
-                            <td class="font-size-20 text-danger">
-                                
-                                <span>
-                                    @Model.Gia VNĐ
-                                </span>
-                            </td>
-                            <td>
-                                <span class="font-size-12">&nbsp;&nbsp;Inclusive of all taxes</span>
-                            </td>
-                        </tr>
-                        <tr>
                             <td>You Save:</td>
                             <td><span class="font-size-16 text-danger">@Model.Gia VNĐ</span></td>
                         </tr>
                     </table>
+
+                    @using (Html.BeginForm("Them", "GioHang", FormMethod.Post))
+                    {
+                        <input type="hidden" name="masanpham" value="@Model.MaSP" />
+                        <input type="hidden" name="gia" value="@Model.Gia" />
+                        <input type="hidden" name="tensanpham" value="@Model.TenSp" />
+                        <label>Số Lượng :</label><input class="form-inline quantity" type="number" value="1" style="width:70px" min="1" max="1000" name="soluong" />
+
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <input type="submit" class="btn btn-2" value="Thêm vào Giỏ" style="background:gold" />
+
+                        }
+                        else
+                        {
+                            <span>Đăng nhập để thêm giỏ hàng</span>
+                        }
+                    }
+
+
+
+
                     <!--- !product price -->
                     <!--    #policy -->
                     <div id="policy">

@@ -1,0 +1,9 @@
+﻿@model  ShopConnection.SanPham
+<div class="name"><h3><a href="product.html">@Model.TenSp</a></h3></div>
+<div class="info">
+    <ul>
+        <li style="list-style-type:none" ><input name="masanpham" type="hidden" value="@Model.MaSP" /></li>
+        <li style="list-style-type:none" ><input type="hidden" value="@Model.Gia" /></li>
+    </ul>
+</div>
+<div class="price">@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.Gia)</div>

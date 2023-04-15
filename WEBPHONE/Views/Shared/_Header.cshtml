@@ -1,9 +1,11 @@
-﻿<header id="header">
+﻿
+<header id="header">
     <div class="topnav d-flex justify-content-end px-4 py-1">
         <div class="font-size-14 px-3 border-start text-dark">
             @Html.Partial("_LoginPartial")
         </div>
     </div>
+
     <!-- Primary Navigation -->
     <nav class="navbar navbar-expand-lg px-3 navbar-dark color-second-bg">
         <img src="~/assets/assets/phone.png" class="logo">
@@ -14,30 +16,31 @@
         </button>
         <div class="collapse navbar-collapse navbar-exl-collapse" id="navbarNav">
             <ul class="nav navbar-nav m-auto">
-                <li class="nav-item active">
-                    @Html.ActionLink("Trang Chủ", "Index", "Home")
+                <li class="nav-item active" style="margin-top:8px; margin-right: 10px">
+                    <a style="color: rgba(255, 255, 255, 0.55)" href="@Url.Action("Index", "Home")">Trang Chủ</a>
+
+                    @*@Html.ActionLink("Trang Chủ", "Index", "Home", new { @class = "my-link" })*@
                 </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Product", "Index", "Shop")
+                <li class="nav-item" style="margin-top:8px">
+                    <a style="color: rgba(255, 255, 255, 0.55)" href="@Url.Action("Index","Shop")">Sản Phẩm</a>
+                    @*@Html.ActionLink("Sản Phẩm", "Index", "Shop")*@
                 </li>
                 @Html.Partial("_NhaSanXuat", WEBPHONE.Models.BUSS.NhaSanXuatBUS.DanhSach())
                 @Html.Partial("_LoaiSanPham", WEBPHONE.Models.BUSS.LoaiSanPhamBUS.DanhSach())
                 <li class="nav-item">
                     <a class="nav-link" href="#">Blogs</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Cart</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="#">Coming Soon</a>
                 </li>
             </ul>
             <form action="#" class="font-size-12">
-                <a href="./cart.html" class="d-flex align-items-center rounded-pill bg-primary">
+                <a href="@Url.Action("index", "GioHang")" class="d-flex align-items-center rounded-pill bg-primary">
                     <span class="font-size-14 px-2 py-2 text-white">
                         <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                     </span>
-                    <div class="px-3 py-2 font-size-14 rounded-pill text-black bg-white">0</div>
+                    <div class="px-3 py-2 font-size-14 rounded-pill text-black bg-white"></div>
                 </a>
             </form>
         </div>

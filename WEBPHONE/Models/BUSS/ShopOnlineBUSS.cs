@@ -49,19 +49,23 @@ namespace WEBPHONE.Models.BUSS
             var sp = ChiTiet(id);
 
             var product = ShopOnlineBUSS.ChiTiet(id);
+            
+            
             var images = product.HinhChinh;
-            XElement xImages = XElement.Parse(images);
-            List<string> listImageReturn = new List<string>();
+            return "/assets/assets/products/"+images;
+            //XElement xImages = XElement.Parse(images);
 
-            foreach (XElement element in xImages.Elements())
-            {
-                listImageReturn.Add(element.Value);
-            }
-            if (listImageReturn.Count() == 0)
-            {
-                return "/assets/assets/products/1.png";
-            }
-            return listImageReturn.ElementAt(0).ToString();
+            //List<string> listImageReturn = new List<string>();
+
+            //foreach (XElement element in xImages.Elements())
+            //{
+            //    listImageReturn.Add(element.Value);
+            //}
+            //if (listImageReturn.Count() == 0)
+            //{
+            //    return "/assets/assets/products/1.png";
+            //}
+            //return listImageReturn.ElementAt(0).ToString();
         }
 
         public static void DeleteSP(String id, SanPham sp)
