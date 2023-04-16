@@ -175,18 +175,43 @@ namespace ShopConnection
 		[Column] public string UserName { get; set; }
 	}
     
-	[TableName("dbo.GioHang")]
-	[PrimaryKey("IdGH")]
+	[TableName("dbo.BinhLuan")]
+	[PrimaryKey("ID")]
 	[ExplicitColumns]
-    public partial class GioHang : ShopConnectionDB.Record<GioHang>  
+    public partial class BinhLuan : ShopConnectionDB.Record<BinhLuan>  
     {
-		[Column] public int IdGH { get; set; }
-		[Column] public string MaTaiKhoan { get; set; }
+		[Column] public int ID { get; set; }
+		[Column] public string CustomerID { get; set; }
+		[Column] public string ProductID { get; set; }
+		[Column] public string Content { get; set; }
+		[Column] public DateTime? NgayBL { get; set; }
+	}
+    
+	[TableName("dbo.ChiTietHoaDon")]
+	[PrimaryKey("HoaDonID", AutoIncrement=false)]
+	[ExplicitColumns]
+    public partial class ChiTietHoaDon : ShopConnectionDB.Record<ChiTietHoaDon>  
+    {
 		[Column] public string MaSP { get; set; }
+		[Column] public int HoaDonID { get; set; }
 		[Column] public string TenSP { get; set; }
 		[Column] public int? SoLuong { get; set; }
 		[Column] public int? Gia { get; set; }
 		[Column] public int? TongTien { get; set; }
+	}
+    
+	[TableName("dbo.HoaDon")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+    public partial class HoaDon : ShopConnectionDB.Record<HoaDon>  
+    {
+		[Column] public int ID { get; set; }
+		[Column] public DateTime? NgayTao { get; set; }
+		[Column] public string NguoiDat { get; set; }
+		[Column] public string SDT { get; set; }
+		[Column] public int? TongTien { get; set; }
+		[Column] public int? TrangThai { get; set; }
+		[Column] public string NguoiNhan { get; set; }
 	}
     
 	[TableName("dbo.LoaiSanPham")]
@@ -225,5 +250,17 @@ namespace ShopConnection
 		[Column] public int? Gia { get; set; }
 		[Column] public int? TinhTrang { get; set; }
 		[Column] public string GhiChu { get; set; }
+	}
+    
+	[TableName("dbo.sysdiagrams")]
+	[PrimaryKey("diagram_id")]
+	[ExplicitColumns]
+    public partial class sysdiagram : ShopConnectionDB.Record<sysdiagram>  
+    {
+		[Column] public string name { get; set; }
+		[Column] public int principal_id { get; set; }
+		[Column] public int diagram_id { get; set; }
+		[Column] public int? version { get; set; }
+		[Column] public byte[] definition { get; set; }
 	}
 }

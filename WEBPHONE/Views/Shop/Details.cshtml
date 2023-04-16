@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <img src="~/assets/assets/products/@Model.HinhChinh" alt="product" class="img-fluid">
-                    
+
                 </div>
                 <div class="col-sm-6 py-5">
                     <h5 class="font-size-20">@Model.TenSp</h5>
@@ -39,23 +39,12 @@
                         </tr>
                     </table>
 
-                    @using (Html.BeginForm("Them", "GioHang", FormMethod.Post))
-                    {
-                        <input type="hidden" name="masanpham" value="@Model.MaSP" />
-                        <input type="hidden" name="gia" value="@Model.Gia" />
-                        <input type="hidden" name="tensanpham" value="@Model.TenSp" />
-                        <label>Số Lượng :</label><input class="form-inline quantity" type="number" value="1" style="width:70px" min="1" max="1000" name="soluong" />
 
-                        if (User.Identity.IsAuthenticated)
-                        {
-                            <input type="submit" class="btn btn-2" value="Thêm vào Giỏ" style="background:gold" />
 
-                        }
-                        else
-                        {
-                            <span>Đăng nhập để thêm giỏ hàng</span>
-                        }
-                    }
+
+
+                    <input onclick="addToCart('@Model.MaSP', '@Model.TenSp', @Model.Gia); window.location.href = '@Url.Action("Index", "GioHang")';" class="btn btn-2" value="Thêm vào Giỏ" style="background:gold" />
+
 
 
 
@@ -151,176 +140,27 @@
                     </div>
                     <!-- !size -->
                 </div>
-                <div class="col-12">
-                    <h6>Product Description</h6>
-                    <hr>
-                    <p class="font-size-14">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                        Repellat inventore vero numquam error est ipsa, consequuntur temporibus debitis nobis sit,
-                        delectus officia ducimus dolorum sed corrupti. Sapiente optio sunt provident, accusantium
-                        eligendi eius reiciendis animi? Laboriosam, optio qui? Numquam, quo fuga. Maiores minus,
-                        accusantium velit numquam a aliquam vitae vel?
-                    </p>
-                    <p class="font-size-14">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                        Repellat inventore vero numquam error est ipsa, consequuntur temporibus debitis nobis sit,
-                        delectus officia ducimus dolorum sed corrupti. Sapiente optio sunt provident, accusantium
-                        eligendi eius reiciendis animi? Laboriosam, optio qui? Numquam, quo fuga. Maiores minus,
-                        accusantium velit numquam a aliquam vitae vel?
-                    </p>
-                </div>
+
             </div>
         </div>
     </section>
-    <!-- !start product -->
-    <!-- Top Sale -->
-    <section id="top-sale">
-        <div class="container py-5">
-            <h4 class="font-size-20">Top Sale</h4>
-            <hr>
-            <!-- owl carousel -->
-            <div class="owl-carousel owl-theme">
-                <div class="item py-2 border rounded-2 bg-light">
-                    <div class="product">
-                        <a href="product.html"><img src="~/assets/assets/products/1.png" alt="product1" class="img-fluid"></a>
-                        <div class="text-center">
-                            <h6>Samsung Galaxy 10</h6>
-                            <div class="rating text-warning font-size-12">
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="far fa-star"></i></span>
-                            </div>
-                            <div class="price py-2">
-                                <span>$152</span>
-                            </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item py-2 border rounded-2 bg-light">
-                    <div class="product">
-                        <a href="product.html"><img src="~/assets/assets/products/2.png" alt="product1" class="img-fluid"></a>
-                        <div class="text-center">
-                            <h6>Readme Note 7</h6>
-                            <div class="rating text-warning font-size-12">
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="far fa-star"></i></span>
-                            </div>
-                            <div class="price py-2">
-                                <span>$152</span>
-                            </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item py-2 border rounded-2 bg-light">
-                    <div class="product">
-                        <a href="product.html"><img src="~/assets/assets/products/3.png" alt="product1" class="img-fluid"></a>
-                        <div class="text-center">
-                            <h6>Readme Note 7</h6>
-                            <div class="rating text-warning font-size-12">
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="far fa-star"></i></span>
-                            </div>
-                            <div class="price py-2">
-                                <span>$152</span>
-                            </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item py-2 border rounded-2 bg-light">
-                    <div class="product">
-                        <a href="product.html"><img src="~/assets/assets/products/6.png" alt="product1" class="img-fluid"></a>
-                        <div class="text-center">
-                            <h6>Samsung Galaxy 10</h6>
-                            <div class="rating text-warning font-size-12">
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="far fa-star"></i></span>
-                            </div>
-                            <div class="price py-2">
-                                <span>$152</span>
-                            </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item py-2 border rounded-2 bg-light">
-                    <div class="product">
-                        <a href="product.html"><img src="~/assets/assets/products/1.png" alt="product1" class="img-fluid"></a>
-                        <div class="text-center">
-                            <h6>Readme Note 7</h6>
-                            <div class="rating text-warning font-size-12">
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="far fa-star"></i></span>
-                            </div>
-                            <div class="price py-2">
-                                <span>$152</span>
-                            </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item py-2 border rounded-2 bg-light">
-                    <div class="product">
-                        <div class="d-flex flex-column">
-                            <a href="product.html"><img src="~/assets/assets/products/1.png" class="img-fluid" alt="pro1"></a>
-                            <div class="text-center">
-                                <h6>Readme Note 7</h6>
-                                <div class="rating text-warning font-size-12">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="far fa-star"></i></span>
-                                </div>
-                                <div class="price py-2">
-                                    <span>$122</span>
-                                </div>
-                                <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item py-2 border rounded-2 bg-light">
-                    <div class="product">
-                        <div class="d-flex flex-column">
-                            <a href="product.html"><img src="~/assets/assets/products/2.png" class="img-fluid" alt="pro1"></a>
-                            <div class="text-center">
-                                <h6>Readme Note 7</h6>
-                                <div class="rating text-warning font-size-12">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="far fa-star"></i></span>
-                                </div>
-                                <div class="price py-2">
-                                    <span>$122</span>
-                                </div>
-                                <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- !owl carousel -->
-        </div>
-    </section>
-    <!-- !Top Sale -->
+    @Html.Partial("_BinhLuan", WEBPHONE.Models.BUSS.BinhLuanBUS.LoadBinhLuan())
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form method="post" action="~/BinhLuan/Create" style="padding:0 20px; margin-bottom:40px">
+            <input type="hidden" name="masanpham" value="@Model.MaSP">
+            <textarea style="width:100%;max-width:100%;max-height:300px;" maxlength="2048" placeholder="Nhập nội dung cần bình luận...." name="noidung"></textarea>
+            <input type="submit" value="Bình Luận" style="float:right;background:gold; color:white;margin-bottom:10px" />
+        </form>
+    }
+    else
+    {
+        <h2 style="padding:0 20px">Vui lòng đăng nhập để bình luận</h2>
+    }
+
+
+
 </main>
+
 <!-- !start #main-site -->

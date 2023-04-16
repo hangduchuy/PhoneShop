@@ -1,34 +1,135 @@
-﻿@model IEnumerable<ShopConnection.GioHang>
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
-<form>
-    <!--<input type="Text" placeholder="Nhập" required /> -->
-</form>
-<hr style="height:40px;" />
-@foreach (var item in Model)
-{
-    // từ bên shop.details . Gửi ma san pham , ten san pham va gia san pham
-    // tu db lay len so luong . soluong * gia ra tien . Cong tat ca tien ra tong tien
-    <div class="row">
-        <div class="product well">
-            <div class="col-md-3">
-                <div class="image">
-                    @Html.Partial("_AvartaDetails", WEBPHONE.Models.BUSS.ShopOnlineBUSS.LoadAvartaImg(item.MaSP.ToString()))
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="caption">
-                    @Html.Partial("_GioHang", WEBPHONE.Models.BUSS.ShopOnlineBUSS.ChiTiet(item.MaSP.ToString()))
-                    <label>Số lượng : </label> <span>@item.SoLuong</span> <br />
-                    <span>Tổng tiền : @item.TongTien</span>
-                    <hr>
-                </div>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
+<style>
+    /* định dạng phần tử chứa tổng tiền */
+    .product {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display:flex;
+        align-items:center;
+        padding:0 30px;
+    }
+    
+        .product .col-md-3,
+        .product .col-lg-3 {
+            font-weight: bold;
+            font-size: 18px;
+        }
 
-}
+        .product .col-md-9,
+        .product .col-lg-9 {
+            text-align: right;
+            font-size: 18px;
+        }
+
+    .caption {
+        padding: 10px;
+        font-weight:bold;
+    }
+
+    /* định dạng nút Đặt hàng */
+    .payment {
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width:100%;
+    }
+
+        .payment:hover {
+            background-color: orange;
+        }
+
+    /* định dạng các trường nhập liệu */
+    .form-group {
+        margin-bottom: 20px;
+        padding:20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type=text] {
+        width: 100%;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        background: gold;
+       
+    }
+    h2{
+        text-align:center;
+        margin-top: 10px;
+    }
+    
+</style>
+
+<div>
+    <h2>Thông Tin Đặt Hàng</h2>
+    @using (Html.BeginForm("Them", "ThanhToan", FormMethod.Post))
+    {
+
+        <input type="hidden" class="form-control" name="nguoidat" placeholder="Nhap ho va ten">
+
+        <div class="form-group">
+            <label for="hoten">Họ và tên người nhận</label>
+            <input type="text" class="form-control" id="hoten" name="nguoinhan" placeholder="nhập tên người nhận hàng" required>
+        </div>
+        <div class="form-group">
+            <label for="sdt">Số điện thoại</label>
+            <input type="text" class="form-control" id="sdt" name="sdt" placeholder="Nhập số điện thoại người nhận" required>
+        </div>
+        <div class="totalBill"></div>
+
+        <div style="background: gold; display: flex; justify-content: center; align-items: center; border-radius: 6px; margin:0 20px">
+            <input type="submit" class="btn btn-2 payment" value="Đặt hàng" onclick={handlePay()} />
+        </div>
+    }
+
+    <div class="coast"></div>
+</div>
+
+<script>
+    let p = document.querySelector(".coast")
+    console.log(p)
+    let t = document.querySelector(".totalBill")
+
+    let get = JSON.parse(localStorage.getItem("totalBill"));
+    let moneyFormatRegex = /\B(?=(\d{3})+(?!\d))/g;
+    let formattedMoneyString = get.toFixed(2).replace(moneyFormatRegex, ",");
+
+    
+    let input = ` <input type="hidden" class="form-control" id="tongtien" name="tongtien" value="${get}">`
+    let html = `
+             <div class="row">
+                    <div class="product well">
+                        <div class="col-md-3 col-lg-3">
+                            Tổng Tiền :
+                        </div>
+                        <div class="col-md-9 col-lg-9">
+                            <div class="caption">
+                                ${formattedMoneyString}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>`
+    p.innerHTML = html
+
+    t.innerHTML = input
+    function handlePay()  {
+        console.log("da xoa local")
+        localStorage.clear()
+    }
+    
+</script>
 

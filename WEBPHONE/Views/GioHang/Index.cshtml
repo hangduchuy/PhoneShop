@@ -1,10 +1,74 @@
 ﻿
-@model IEnumerable<ShopConnection.GioHang>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
+<style>
+    /* Style the cart table */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
 
+    th,
+    td {
+        text-align: left;
+        padding: 0.75rem;
+        vertical-align: top;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        border-bottom: 1px solid #ddd;
+    }
+
+    td {
+        border-bottom: 1px solid #ddd;
+    }
+
+        td .productItem {
+            display: flex;
+            align-items: center;
+        }
+
+            td .productItem .product-title {
+                font-weight: bold;
+                margin: 0;
+            }
+
+        td .buttons_added {
+            display: flex;
+            align-items: center;
+        }
+
+            td .buttons_added input[type="button"] {
+                border: none;
+                background-color: transparent;
+                color: #777;
+                font-size: 1rem;
+                font-weight: bold;
+                padding: 0 0.5rem;
+            }
+
+            td .buttons_added input[type="number"] {
+                width: 50px;
+                text-align: center;
+            }
+
+        td .delete {
+            color: red;
+            cursor: pointer;
+        }
+
+    .price {
+        font-weight: bold;
+    }
+
+
+</style>
 <div id="page-content" class="single-page">
     <div class="container">
         <div class="row">
@@ -15,71 +79,163 @@
                 </ul>
             </div>
         </div>
-        @foreach (var item in Model)
-        {
-            // từ bên shop.details . Gửi ma san pham , ten san pham va gia san pham
-            // tu db lay len so luong . soluong * gia ra tien . Cong tat ca tien ra tong tien
-            <div class="row">
-                <div class="product well" style="display:flex">
-                    <div class="col-md-3">
-                        <div class="image">
-                            @Html.Partial("_AvartaDetails", WEBPHONE.Models.BUSS.ShopOnlineBUSS.LoadAvartaImg(item.MaSP.ToString()))
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="caption">
-                            @using (Html.BeginForm("CapNhat", "GioHang", FormMethod.Post))
-                            {
-                                <input type="hidden" name="masanpham" value="@item.MaSP" />
-                                <input type="hidden" name="tensanpham" value="@item.TenSP" />
-                                <input type="hidden" name="gia" value="@item.Gia" />
-                                @Html.Partial("_GioHang", WEBPHONE.Models.BUSS.ShopOnlineBUSS.ChiTiet(item.MaSP.ToString()))
-                                <label>Số lượng : </label> <input class="form-inline quantity" min="1" max="1000" type="number" value="@item.SoLuong" name="soluong"><input type="submit" class="btn btn-2 " value="Update" /> <br />
-                                <span>Tổng Tiền :@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", item.TongTien)</span>
-                                <hr>
-                            }
-                            <a href="@Url.Action("Xoa","GioHang",new { masanpham= item.MaSP})" class="btn btn-default pull-right">REMOVE</a>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
+   
 
-        }
+        <div id="cart">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sản Phẩm</th>
+                        <th>Số Lượng</th>
+                        <th>Tạm Tính</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <td>
 
-
-
-        @*Quay về trang sản phẩm*@
-    <div style="display:flex;justify-content:space-between">
-        <div class="col-md-4 col-md-offset-8 ">
-            <a href="@Url.Action("index","Shop")" class="btn btn-1">Continue To Shopping</a>
+                </td>
+                </tbody>
+            </table>
         </div>
-        @*Tính tiền*@
-        
+    
+        <div style="display:flex;justify-content:space-between ; margin-bottom: 20px">
+            <div class="col-md-4 col-md-offset-8 " style="background:gold; height:40px; text-align:center; border-radius:6px">
+                <a href="@Url.Action("index", "Shop")" class="btn btn-1">Continue To Shopping</a>
+            </div>
+            @*Tính tiền*@
+
             <div class="col-md-8 ">
                 <div class="col-md-offset-8" style="align-items:center;">
-                    <table style="align-items: self-end; display: flex; flex-direction: column;">
-                        <h6>Tính tiền : </h6>
-                        <tr>
-                            <td>Tổng</td>
-                            <td>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", ViewBag.TongTien)</td>
-                        </tr>
-
-                        <tr>
-                            <td>Giảm giá : </td>
-                            <td>0</td>
-                        </tr>
-                        <tr style="border-top: 1px solid #333">
-                            <td><h5>THÀNH TIỀN</h5></td>
-                            <td>@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", ViewBag.TongTien)</td>
-                        </tr>
-                    </table>
-                    <a href="@Url.Action("Index","ThanhToan")" class="btn btn-1" style="text-align: center; display: flex; background: gold;justify-content:center">Checkout</a>
+                   
+                        
+                        <div class="total"style="display:flex; justify-content:end">
+                            <p>Tổng Tiền:</p>
+                            <span class="total-price"></span>
+                        </div>
+                        <div style="text-align: center; background: gold; float: right; border-radius: 6px;width:200px">
+                            <a href="@Url.Action("Index", "ThanhToan")" class="btn btn-1">Checkout</a>
+                        </div>
                 </div>
             </div>
-       
-    </div>
 
-        
+        </div>
+
+
     </div>
 </div>
+<script>
+    var tbody = document.querySelector("tbody")
+    var getSaveListproduct = localStorage.getItem("cart")
+    var carts = JSON.parse(getSaveListproduct)
+
+    const app = {
+    list: carts,
+
+
+    render: function () {
+        let getCart = JSON.parse(localStorage.getItem("cart"))
+        const content = this.list.map((product, i) => {
+
+            return `
+    <tr>
+        <div class="productItem">
+        
+        <td>
+            <p class="product-title">${product.name}</p>
+        </td>
+        <td>
+            <div class="buttons_added">
+                <input class="minus is-form" type="button" value="-">
+                <input aria-label="quantity" class="input-qty" max="" min="1" type="number"
+                       value="${product.quantity}" readonly>
+                <input class="plus is-form" type="button" value="+" ">
+            </div>
+        </td>
+        <td> <span class="price">${product.price}</span> <span class="currency-unit"> Đ</span></td>
+
+        <td>
+            <div class="delete" style="padding:5px 10px;background:red; color:white">Remove</div>
+        </td>
+        </div>
+    </tr>
+            `
+        })
+        tbody.innerHTML = content.join('')
+        changeItem()
+        toTalPrice()
+        removeProduct()
+    },
+
+
+
+    start: function () {
+        this.render()
+    }
+}
+    app.start()
+
+    function removeProduct() {
+        let buttonDelete = document.querySelectorAll(".delete")
+        for (let i = 0; i < buttonDelete.length; i++) {
+            buttonDelete[i].onclick = function () {
+                if (i === 0) {
+                    carts.splice(0, 1)
+                    localStorage.setItem("cart", JSON.stringify(carts))
+                }
+                else {
+                    carts.splice(i, 1)
+                    localStorage.setItem("cart", JSON.stringify(carts))
+                }
+
+                app.render()
+
+
+            }
+        }
+    }
+     function toTalPrice() {
+            let tong = 0
+         for (let i = 0; i < app.list.length; i++) {
+             tong += Number(app.list[i].price).toFixed(3) * Number(app.list[i].quantity).toFixed(3)
+         }
+
+
+         localStorage.setItem("totalBill", tong)
+         let total = document.querySelector(".total-price")
+         const format = (tong * 1000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+         total.innerHTML = format + " Đ"
+        }
+     function changeItem() {
+            var listCurrent = document.querySelectorAll(".productItem")
+            for (let i = 0; i < listCurrent.length; i++) {
+                let minus = document.querySelectorAll(".minus")[i]
+                let plus = document.querySelectorAll(".plus")[i]
+                minus.onclick = function () {
+                    let nb = document.querySelectorAll(".input-qty")[i].value
+                    console.log(nb)
+                    if (nb > 2) {
+                        document.querySelectorAll(".input-qty")[i].value = parseInt(nb) - 1
+                        carts[i].quantity = parseInt(nb) - 1
+                        localStorage.setItem("cart", JSON.stringify(carts))
+                        app.render()
+                    } else {
+                        document.querySelectorAll(".input-qty")[i].value = 1
+                        carts[i].quantity = 1
+                        localStorage.setItem("cart", JSON.stringify(carts))
+                        app.render()
+                    }
+
+                }
+                plus.onclick = function () {
+                    var nb = document.querySelectorAll(".input-qty")[i].value
+                    document.querySelectorAll(".input-qty")[i].value = parseInt(nb) + 1
+                    carts[i].quantity = parseInt(nb) + 1
+                    localStorage.setItem("cart", JSON.stringify(carts))
+                    app.render()
+                }
+            }
+
+        }
+</script>
+

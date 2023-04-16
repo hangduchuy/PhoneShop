@@ -21,6 +21,8 @@ namespace WEBPHONE.Controllers
         public ActionResult Details(String id)
         {
             var db = ShopOnlineBUSS.ChiTiet(id);
+            var binhLuanList = BinhLuanBUS.LoadBinhLuanBySanPhamId(id);
+            ViewBag.BinhLuanList = binhLuanList;
             return View(db);
         }
 

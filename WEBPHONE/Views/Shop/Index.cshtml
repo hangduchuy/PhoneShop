@@ -14,8 +14,8 @@
             {
                 <div class="item py-2 border rounded-2 bg-light">
                     <div class="product" style="width:200px;height:350px">
-                        <a href="@Url.Action("Details",new {  id= @item.MaSP})"><img  src="~/assets/assets/products/@item.HinhChinh" alt="product1" class="img-fluid"></a>
-                        <div class="text-center">
+                        <a href="@Url.Action("Details",new {  id= @item.MaSP})"><img src="~/assets/assets/products/@item.HinhChinh" alt="product1" class="img-fluid"></a>
+                        <div class="text-center" style="height:100px">
                             <h6>@item.TenSp</h6>
                             <div class="rating text-warning font-size-12">
                                 <span><i class="fas fa-star"></i></span>
@@ -27,8 +27,9 @@
                             <div class="price py-2">
                                 <span>$@item.Gia</span>
                             </div>
-                            <button type="submit" class="btn btn-warning font-size-12">Add to Cart</button>
+
                         </div>
+                        <input onclick="addToCart('@item.MaSP', '@item.TenSp', @item.Gia); window.location.href = '@Url.Action("Index", "GioHang")';" class="btn btn-2" value="Thêm vào Giỏ" style="background:gold;margin-left:5px" />
                     </div>
                 </div>
             }

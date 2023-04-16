@@ -9,17 +9,28 @@ using WEBPHONE.Models.BUSS;
 
 namespace WEBPHONE.Controllers
 {
+    [Authorize]
     public class ThanhToanController : Controller
     {
         // GET: ThanhToan
         public ActionResult Index()
         {
-            List<GioHang> ds = GioHangBUS.DanhSach(User.Identity.GetUserId()).ToList();
-            if (ds.Count() == 0)
+           
+            
+            return View("Index");
+        }
+        [HttpPost]
+        public ActionResult Them(string nguoinhan,string sdt,int tongtien)
+        {
+            try
+            {
+                ThanhToanBUSS.Them(nguoinhan, User.Identity.GetUserId(),sdt, tongtien);
+                return RedirectToAction("../Shop/Index");
+            }
+            catch (Exception ex)
             {
                 return RedirectToAction("../Shop/Index");
             }
-            return View(ds);
         }
 
     }

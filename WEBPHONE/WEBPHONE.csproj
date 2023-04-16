@@ -180,6 +180,7 @@
     <Compile Include="Areas\Admin\Controllers\NhaSanXuatAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamAdminController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BinhLuanController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoaiSanPhamController.cs" />
@@ -191,10 +192,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\BUSS\GioHangBUS.cs" />
+    <Compile Include="Models\BUSS\BinhLuanBUS.cs" />
     <Compile Include="Models\BUSS\LoaiSanPhamBUS.cs" />
     <Compile Include="Models\BUSS\NhaSanXuatBUS.cs" />
     <Compile Include="Models\BUSS\ShopOnlineBUSS.cs" />
+    <Compile Include="Models\BUSS\ThanhToanBUSS.cs" />
     <Compile Include="Models\Generated\Database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2608,6 +2610,7 @@
     <Content Include="Areas\AssetAdmin\ckeditor\SECURITY.md" />
     <Content Include="Areas\AssetAdmin\ckeditor\skins\moono-lisa\readme.md" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\cart.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -2665,11 +2668,13 @@
     <Content Include="Views\Shared\_GioHang.cshtml" />
     <Content Include="Views\Shared\_AvartaDetails.cshtml" />
     <Content Include="Views\ThanhToan\Index.cshtml" />
+    <Content Include="Views\Shared\_BinhLuan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="assets\img\" />
+    <Folder Include="Views\BinhLuan\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

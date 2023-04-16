@@ -40,10 +40,19 @@
                     <span class="font-size-14 px-2 py-2 text-white">
                         <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                     </span>
-                    <div class="px-3 py-2 font-size-14 rounded-pill text-black bg-white"></div>
+                    <div class="px-3 py-2 font-size-14 rounded-pill text-black bg-white totalCart"></div>
                 </a>
             </form>
         </div>
     </nav>
     <!-- !Primary Navigation -->
 </header>
+<script>
+    let totalQuantity = document.querySelector(".totalCart")
+    
+    const c = JSON.parse(localStorage.getItem('cart')) || [];
+    totalQuantity.textContent = totalCart(c);
+
+    
+
+</script>
