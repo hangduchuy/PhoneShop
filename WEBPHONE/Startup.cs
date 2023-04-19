@@ -12,7 +12,7 @@ namespace WEBPHONE
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            createRolesandUsers();
+            //createRolesandUsers();
         }
 
         // In this method we will create default User roles and Admin user for login    
@@ -39,7 +39,7 @@ namespace WEBPHONE
                 user.UserName = "admin@gmail.com";
                 user.Email = "admin@gmail.com";
 
-                string userPWD = "Admin@123";
+                string userPWD = "Admin@1234";
 
                 var chkUser = UserManager.Create(user, userPWD);
 

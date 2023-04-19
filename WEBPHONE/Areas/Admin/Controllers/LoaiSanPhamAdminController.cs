@@ -10,7 +10,7 @@ namespace WEBPHONE.Areas.Admin.Controllers
 {
     public class LoaiSanPhamAdminController : Controller
     {
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         // GET: Admin/LoaiSanPhamAdmin
         public ActionResult Index()
         {

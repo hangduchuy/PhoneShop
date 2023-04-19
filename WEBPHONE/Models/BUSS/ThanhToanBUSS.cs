@@ -18,6 +18,7 @@ namespace WEBPHONE.Models.BUSS
                     NguoiDat = mataikhoan,
                     NguoiNhan = nguoinhan,
                     TongTien = tongtien,
+                    TrangThai = 1,
                     SDT= sdt,
                     NgayTao= DateTime.Now,
                         

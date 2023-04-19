@@ -1,14 +1,37 @@
 ﻿@model IEnumerable<ShopConnection.NhaSanXuat>
 <div class="dropdown">
     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Thương Hiệu</a> @*M.Product la nha san xuat*@
-    <div class="dropdown-menu">
+    <div class="dropdown-menu" >
         <div class="dropdown-inner">
-            <ul>
+            <ul >
                 @foreach (var item in Model)
                 {
-                    <li style="list-style-type:none; "><a style=" color: #808080" href="@Url.Action("Index", "NhaSanXuat", new { id = @item.MaNSX})">@item.TenNSX</a></li>
+                    <li style="list-style-type:none; "><a style=" color: #000000;padding:0 10px 55px;margin-top: 5px" href="@Url.Action("Index", "NhaSanXuat", new { id = @item.MaNSX})">@item.TenNSX</a><hr /></li>
+                    
                 }
             </ul>
         </div>
     </div>
 </div>
+<style>
+    .dropdown-inner li {
+        background: #ffffff;
+        margin-top:-5px;
+        margin-bottom:-15px;
+        text-align:center;
+          
+        
+    }
+    
+        .dropdown-inner li:last-child {
+        }
+        ul {
+            padding: 0;
+            margin-top: 5px;
+        }
+    .dropdown-menu {
+        padding: 0;
+        margin-top: 8px;
+        background:#000000;
+    }
+</style>

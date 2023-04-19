@@ -1,13 +1,13 @@
 ﻿@using WEBPHONE.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = "LOGIN";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2 style="text-align:center;padding:10px 0">@ViewBag.Title</h2>
 <div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
+    <div class="col-md-7" style="margin-left:10px" >
+        <section id="loginForm" >
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()

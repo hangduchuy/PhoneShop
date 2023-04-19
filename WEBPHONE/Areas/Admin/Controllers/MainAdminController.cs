@@ -8,7 +8,7 @@ namespace WEBPHONE.Areas.Admin.Controllers
 {
     public class MainAdminController : Controller
     {
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         // GET: Admin/MainAdmin
         public ActionResult Index()
         {

@@ -12,7 +12,7 @@ namespace WEBPHONE.Areas.Admin.Controllers
 {
     public class SanPhamAdminController : Controller
     {
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         // GET: Admin/SanPhamAdmin
         public ActionResult Index()
         {
