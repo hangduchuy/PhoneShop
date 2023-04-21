@@ -29,42 +29,13 @@
         border-bottom: 1px solid #ddd;
     }
 
-        td .productItem {
+     td .cart-item {
             display: flex;
             align-items: center;
         }
-
-            td .productItem .product-title {
-                font-weight: bold;
-                margin: 0;
-            }
-
-        td .buttons_added {
-            display: flex;
-            align-items: center;
-        }
-
-            td .buttons_added input[type="button"] {
-                border: none;
-                background-color: transparent;
-                color: #777;
-                font-size: 1rem;
-                font-weight: bold;
-                padding: 0 0.5rem;
-            }
-
-            td .buttons_added input[type="number"] {
-                width: 50px;
-                text-align: center;
-            }
-
-        td .delete {
-            color: red;
-            cursor: pointer;
-        }
-
-    .price {
-        font-weight: bold;
+    .cart-item-image img{
+        width: 100px;
+        height:150px
     }
 
 
@@ -74,8 +45,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <ul class="breadcrumb">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <span>></span>
+                    <li><a href=@Url.Action("Index", "GioHang")>Cart</a></li>
                 </ul>
             </div>
         </div>
@@ -85,11 +57,11 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Sản Phẩm</th>
+                        <th>Hình Ảnh Sản Phẩm</th>
+                        <th>Tên Sản Phẩm</th>
                         <th>Số Lượng</th>
                         <th>Tạm Tính</th>
-                        <th></th>
-                    </tr>
+                    </tr>   
                 </thead>
                 <tbody>
                 <td>
@@ -111,7 +83,7 @@
                         
                         <div class="total"style="display:flex; justify-content:end">
                             <p>Tổng Tiền:</p>
-                            <span class="total-price"></span>
+                            <span class="total-price" id="cart-total"></span>
                         </div>
                         <div style="text-align: center; background: gold; float: right; border-radius: 6px;width:200px">
                             <a href="@Url.Action("Index", "ThanhToan")" class="btn btn-1">Checkout</a>
@@ -126,116 +98,121 @@
 </div>
 <script>
     var tbody = document.querySelector("tbody")
-    var getSaveListproduct = localStorage.getItem("cart")
-    var carts = JSON.parse(getSaveListproduct)
+    // Lấy danh sách CartItem từ Session
+    function renderCart() {
+        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
 
-    const app = {
-    list: carts,
+        if (cartItems.length === 0) {
+            cartItemsDiv.innerHTML = '<p>Giỏ hàng trống</p>';
+        } else {
+            var cartItemsHtml = '';
+            for (var i = 0; i < cartItems.length; i++) {
+                var cartItem = cartItems[i];
+                cartItemsHtml += `
+                <tr>
+                  <div class="cart-item">
+                    <td>
+                        <div class="cart-item-image">
+                          <img src="${cartItem.productImage}" alt="${cartItem.productName}">
+                        </div>
+                    </td>   
 
+                    <td>
+                      <p class="cart-item-name">${cartItem.productName}</p>
+                    </td> 
+                    <td>
+                     <button class="quantity-button" data-cart-item-index="${i}" data-quantity-change="decrease">-</button>
+                            <input class="cart-item-quantity"  value=${cartItem.productQuantity} disabled style="text-align:center; width: 100px">
+                            <button class="quantity-button" data-cart-item-index="${i}" data-quantity-change="increase">+</button>
+                    </td> 
+                    <td>
+                      <p class="cart-item-price"></p>
+                    </td> 
+                <td>
+                  <button class="btn btn-danger btn-sm remove-item-btn" data-product-id="${cartItem.productId}">Xóa</button>
+                </td>
 
-    render: function () {
-        let getCart = JSON.parse(localStorage.getItem("cart"))
-        const content = this.list.map((product, i) => {
-
-            return `
-    <tr>
-        <div class="productItem">
-        
-        <td>
-            <p class="product-title">${product.name}</p>
-        </td>
-        <td>
-            <div class="buttons_added">
-                <input class="minus is-form" type="button" value="-">
-                <input aria-label="quantity" class="input-qty" max="" min="1" type="number"
-                       value="${product.quantity}" readonly>
-                <input class="plus is-form" type="button" value="+" ">
-            </div>
-        </td>
-        <td> <span class="price">${product.price}</span> <span class="currency-unit"> Đ</span></td>
-
-        <td>
-            <div class="delete" style="padding:5px 10px;background:red; color:white">Remove</div>
-        </td>
-        </div>
-    </tr>
-            `
-        })
-        tbody.innerHTML = content.join('')
-        changeItem()
-        toTalPrice()
-        removeProduct()
-    },
-
-
-
-    start: function () {
-        this.render()
-    }
-}
-    app.start()
-
-    function removeProduct() {
-        let buttonDelete = document.querySelectorAll(".delete")
-        for (let i = 0; i < buttonDelete.length; i++) {
-            buttonDelete[i].onclick = function () {
-                if (i === 0) {
-                    carts.splice(0, 1)
-                    localStorage.setItem("cart", JSON.stringify(carts))
-                }
-                else {
-                    carts.splice(i, 1)
-                    localStorage.setItem("cart", JSON.stringify(carts))
-                }
-
-                app.render()
-
-
+                  </div>
+                </tr>
+                `;
             }
-        }
-    }
-     function toTalPrice() {
-            let tong = 0
-         for (let i = 0; i < app.list.length; i++) {
-             tong += Number(app.list[i].price).toFixed(3) * Number(app.list[i].quantity).toFixed(3)
-         }
+            tbody.innerHTML = cartItemsHtml;
+            var removeButtons = document.querySelectorAll('.remove-item-btn');
+            removeButtons.forEach(function (button) {
+                button.addEventListener('click', function (event) {
+                    var productId = this.dataset.productId;
+                    // Tìm index của sản phẩm cần xóa trong danh sách cartItems
+                    var cartItemIndex = cartItems.findIndex(function (item) {
+                        return item.productId === productId;
+                    });
+                    if (cartItemIndex > -1) {
+                        // Xóa sản phẩm khỏi danh sách cartItems
+                        cartItems.splice(cartItemIndex, 1);
+                        // Lưu danh sách mới vào sessionStorage
+                        sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+                        // Cập nhật lại bảng giỏ hàng
+                        renderCart();
+                    }
+                });
+            });
 
 
-         localStorage.setItem("totalBill", tong)
-         let total = document.querySelector(".total-price")
-         const format = (tong * 1000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-         total.innerHTML = format + " Đ"
-        }
-     function changeItem() {
-            var listCurrent = document.querySelectorAll(".productItem")
-            for (let i = 0; i < listCurrent.length; i++) {
-                let minus = document.querySelectorAll(".minus")[i]
-                let plus = document.querySelectorAll(".plus")[i]
-                minus.onclick = function () {
-                    let nb = document.querySelectorAll(".input-qty")[i].value
-                    console.log(nb)
-                    if (nb > 2) {
-                        document.querySelectorAll(".input-qty")[i].value = parseInt(nb) - 1
-                        carts[i].quantity = parseInt(nb) - 1
-                        localStorage.setItem("cart", JSON.stringify(carts))
-                        app.render()
-                    } else {
-                        document.querySelectorAll(".input-qty")[i].value = 1
-                        carts[i].quantity = 1
-                        localStorage.setItem("cart", JSON.stringify(carts))
-                        app.render()
+            var quantityButtons = document.querySelectorAll('.quantity-button');
+            quantityButtons.forEach(function (button) {
+                button.addEventListener('click', function (event) {
+                    var cartItemIndex = parseInt(this.dataset.cartItemIndex);
+                    var quantityChange = this.dataset.quantityChange;
+
+                    var cartItem = cartItems[cartItemIndex];
+
+                    if (quantityChange === 'decrease') {
+                        if (cartItem.productQuantity > 1) {
+                            cartItem.productQuantity--;
+                            sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+                            var cartItemQuantityElement = this.parentElement.querySelector('.cart-item-quantity');
+                            cartItemQuantityElement.innerText = cartItem.productQuantity;
+                        }
+                    } else if (quantityChange === 'increase') {
+                        cartItem.productQuantity++;
+                        sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+                        var cartItemQuantityElement = this.parentElement.querySelector('.cart-item-quantity');
+                        cartItemQuantityElement.innerText = cartItem.productQuantity;
                     }
 
-                }
-                plus.onclick = function () {
-                    var nb = document.querySelectorAll(".input-qty")[i].value
-                    document.querySelectorAll(".input-qty")[i].value = parseInt(nb) + 1
-                    carts[i].quantity = parseInt(nb) + 1
-                    localStorage.setItem("cart", JSON.stringify(carts))
-                    app.render()
-                }
-            }
+                    // Tính lại giá trị giỏ hàng
+                    caculatorCart();
 
+                    // Render lại giỏ hàng
+                    renderCart();
+                });
+            });
+
+            // Tính tổng giá trị giỏ hàng
+            caculatorCart();
         }
+    }
+
+
+        // Tính tổng số tiền trong giỏ hàng
+        function caculatorCart() {
+
+            var total = 0;
+            var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+            var tamtinh = document.querySelectorAll(".cart-item-price")
+            for (var i = 0; i < cartItems.length; i++) {
+                var cartItem = cartItems[i];
+                var price = parseFloat(cartItem.productPrice.replace(/\D/g, ''));
+                var quantity = parseInt(cartItem.productQuantity, 10);
+                total += price * quantity;
+                tamtinh[i].innerText = price * quantity;
+            }
+        
+            // Hiển thị tổng số tiền
+            var totalDiv = document.getElementById('cart-total');
+            totalDiv.innerText = 'Tổng tiền: ' + total.toLocaleString() + ' đ';
+    }
+  
+    renderCart()
+
 </script>
 

@@ -48,10 +48,10 @@
     <!-- !Primary Navigation -->
 </header>
 <script>
-    let totalQuantity = document.querySelector(".totalCart")
+    var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+    let cartCount = document.querySelector(".totalCart")
     
-    const c = JSON.parse(localStorage.getItem('cart')) || [];
-    totalQuantity.textContent = totalCart(c);
+    cartCount.innerText = cartItems.length;
 
     
 

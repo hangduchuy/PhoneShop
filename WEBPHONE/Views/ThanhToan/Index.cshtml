@@ -89,7 +89,7 @@
             <input type="text" class="form-control" id="sdt" name="sdt" placeholder="Nhập số điện thoại người nhận" required>
         </div>
         <div class="totalBill"></div>
-
+        <div class="total"></div>
         <div style="background: gold; display: flex; justify-content: center; align-items: center; border-radius: 6px; margin:0 20px">
             <input type="submit" class="btn btn-2 payment" value="Đặt hàng" onclick={handlePay()} />
         </div>
@@ -97,39 +97,21 @@
 
     <div class="coast"></div>
 </div>
-
 <script>
-    let p = document.querySelector(".coast")
-    console.log(p)
-    let t = document.querySelector(".totalBill")
+    var cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+    var totalBill = document.querySelector(".totalBill")
+    let t = document.querySelector(".total")
+    var total = 0;
+    cartItems.forEach(function (cartItem) {
+       
+        var subTotal = cartItem.productQuantity * cartItem.productPrice;
+        total += subTotal;
+    });
+    totalBill.innerText = 'Tổng giá tiền: ' + total;
+    let input = ` <input type="hidden" class="form-control" id="tongtien" name="tongtien" value="${total}">`
+    t.innerHTML = input;
 
-    let get = JSON.parse(localStorage.getItem("totalBill"));
-    let moneyFormatRegex = /\B(?=(\d{3})+(?!\d))/g;
-    let formattedMoneyString = get.toFixed(2).replace(moneyFormatRegex, ",");
-
-    
-    let input = ` <input type="hidden" class="form-control" id="tongtien" name="tongtien" value="${get}">`
-    let html = `
-             <div class="row">
-                    <div class="product well">
-                        <div class="col-md-3 col-lg-3">
-                            Tổng Tiền :
-                        </div>
-                        <div class="col-md-9 col-lg-9">
-                            <div class="caption">
-                                ${formattedMoneyString}
-                            </div>
-                        </div>
-
-                    </div>
-                </div>`
-    p.innerHTML = html
-
-    t.innerHTML = input
-    function handlePay()  {
-        console.log("da xoa local")
-        localStorage.clear()
-    }
-    
 </script>
+
+
 
