@@ -27,7 +27,7 @@ namespace WEBPHONE.Controllers
                 ThanhToanBUSS.Them(nguoinhan, User.Identity.GetUserId(),sdt, tongtien);
                 return RedirectToAction("../Shop/Index");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return RedirectToAction("../Shop/Index");
             }

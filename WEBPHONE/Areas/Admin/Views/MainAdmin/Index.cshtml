@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<ShopConnection.HoaDon>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
@@ -22,7 +22,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Earnings (Monthly)
+                                THU NHẬP (HÀNG THÁNG)
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
                         </div>
@@ -40,7 +40,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Earnings (Annual)
+                                THU NHẬP (HẰNG NĂM)
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
                         </div>
@@ -100,13 +100,13 @@
         </div>
     </div>
     <!-- Content Row -->
-    <div class="row">
+    <div class="row">@*//////////////////////////////////*@
         <!-- Area Chart -->
         <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Doanh Thu</h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -126,7 +126,9 @@
                 <div class="card-body">
                     <div class="chart-area">
                         <canvas id="myAreaChart"></canvas>
+                        
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -135,7 +137,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Nguồn Doanh Thu</h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -158,13 +160,13 @@
                     </div>
                     <div class="mt-4 text-center small">
                         <span class="mr-2">
-                            <i class="fas fa-circle text-primary"></i> Direct
+                            <i class="fas fa-circle text-primary"></i> Trực tiếp
                         </span>
                         <span class="mr-2">
-                            <i class="fas fa-circle text-success"></i> Social
+                            <i class="fas fa-circle text-success"></i> Xã Hội
                         </span>
                         <span class="mr-2">
-                            <i class="fas fa-circle text-info"></i> Referral
+                            <i class="fas fa-circle text-info"></i> Giới Thiệu
                         </span>
                     </div>
                 </div>
@@ -172,7 +174,7 @@
         </div>
     </div>
     <!-- Content Row -->
-    <div class="row">
+    @*<div class="row">
         <!-- Content Column -->
         <div class="col-lg-6 mb-4">
             <!-- Project Card Example -->
@@ -326,7 +328,47 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
+    
 </div>
 <!-- /.container-fluid -->
+<div class="row">
+    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+</div> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<script type="text/javascript">
+    var xValues = ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T12"];
+    var yValues = [15, 49, 44, 24, 125];
+    var barColors = ["red", "green", "blue", "orange", "brown"];
+    //const labels = Utils.months({ count: 7 });
+    //const data = {
+    //    labels: labels,
+    //    datasets: [{
+    //        label: 'My First Dataset',
+    //        data: [65, 59, 80, 81, 56, 55, 40],
+    //        fill: false,
+    //        borderColor: 'rgb(75, 192, 192)',
+    //        tension: 0.1
+    //    }]
+    //};
+    new Chart("myChart", {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{
+                borderColor: '#4e73df',
+                data: yValues,
+                //fill: false,
+                tension: 0.1
+            }]
+        },
+        options: {}
+        });
+
+    
+</script>   
+    
+
+
 

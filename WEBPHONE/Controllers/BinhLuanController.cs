@@ -27,7 +27,7 @@ namespace WEBPHONE.Controllers
                 BinhLuanBUS.Them(masanpham, User.Identity.GetUserId(), noidung);
                 return RedirectToAction("../Shop/Index");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return RedirectToAction("../Shop/Index");
             }

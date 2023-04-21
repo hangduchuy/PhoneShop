@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WEBPHONE</RootNamespace>
     <AssemblyName>WEBPHONE</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -192,6 +192,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BaoCaoBanHang_TheoSanPham.cs" />
+    <Compile Include="Models\BaoCao\mapBaoCaoThongKe.cs" />
     <Compile Include="Models\BUSS\BinhLuanBUS.cs" />
     <Compile Include="Models\BUSS\LoaiSanPhamBUS.cs" />
     <Compile Include="Models\BUSS\NhaSanXuatBUS.cs" />

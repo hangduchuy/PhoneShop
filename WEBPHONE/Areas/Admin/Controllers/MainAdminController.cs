@@ -10,8 +10,10 @@ namespace WEBPHONE.Areas.Admin.Controllers
     {
         [Authorize(Roles = "Admin")]
         // GET: Admin/MainAdmin
-        public ActionResult Index()
+        public ActionResult Index(int? nam, int? thang)
         {
+            ViewBag.nam = nam ?? DateTime.Now.Year;
+            ViewBag.thang = thang;
             return View();
         }
 
