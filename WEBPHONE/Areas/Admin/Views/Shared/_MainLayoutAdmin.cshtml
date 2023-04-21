@@ -84,6 +84,13 @@
                     <span>Quản lý sản phẩm</span>
                 </a>
             </li>
+            <!-- Thống kê -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("Report", "BaoCao")">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Thống kê</span>
+                </a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
@@ -360,7 +367,21 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <div>
+                        @if (Request.IsAuthenticated)
+                        {
+                            
+                            
+                                @Html.AntiForgeryToken()
+
+                                <div >                                    
+                                    <span><a class="btn btn-primary" href="@Url.Action("LogOff", "Account")">Log off</a></span>
+                                </div>
+                            
+                        }
+                        
+                    </div>
+                    @*<a class="btn btn-primary" href="@Url.Action("")">Logout</a>*@
                 </div>
             </div>
         </div>
