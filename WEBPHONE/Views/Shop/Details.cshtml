@@ -10,12 +10,13 @@
     <section id="product" class="py-3">
         <div class="container">
             <div class="row">
+                <input type="hidden" value="@Model.MaSP" id="product-id"/>
                 <div class="col-sm-6">
-                    <img src="~/assets/assets/products/@Model.HinhChinh" alt="product" class="img-fluid">
+                    <img src="~/assets/assets/products/@Model.HinhChinh" alt="product" class="img-fluid" id="product-image">
 
                 </div>
                 <div class="col-sm-6 py-5">
-                    <h5 class="font-size-20">@Model.TenSp</h5>
+                    <h5 class="font-size-20" id="product-name">@Model.TenSp</h5>
                     <small>by @Model.MaNSX</small>
                     <div class="d-flex">
                         <div class="rating text-warning font-size-12">
@@ -35,15 +36,15 @@
                     <table class="my-3 font-size-14">
                         <tr>
                             <td>You Save:</td>
-                            <td><span class="font-size-16 text-danger">@Model.Gia VNĐ</span></td>
+                            <td><span class="font-size-16 text-danger" id="product-price">@Model.Gia</span> VNĐ</td>
                         </tr>
                     </table>
 
 
+                 
 
 
-
-                    <input onclick="addToCart('@Model.MaSP', '@Model.TenSp', @Model.Gia); window.location.href = '@Url.Action("Index", "GioHang")';" class="btn btn-2" value="Thêm vào Giỏ" style="background:gold" />
+                    <input class="btn btn-2 " value="Thêm vào Giỏ" style="background:gold" id="add-to-cart-button" />
 
 
 
@@ -104,24 +105,7 @@
                             </div>
                             <!-- !color -->
                         </div>
-                        <div class="col-6">
-                            <!-- product qty section -->
-                            <div class="qty d-flex">
-                                <h6>Quantity</h6>
-                                <div class="px-4 d-flex">
-                                    <button class="qty-up border bg-light w-25" data-id="pro1">
-                                        <i class="fas fa-angle-up"></i>
-                                    </button>
-                                    <input type="text" data-id="pro1"
-                                           class="qty_input text-center border px-2 w-50" disabled value="1"
-                                           placeholder="1">
-                                    <button data-id="pro1" class="qty-down border bg-light w-25">
-                                        <i class="fas fa-angle-down"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- !product qty section -->
-                        </div>
+
                     </div>
                     <!-- size -->
                     <div class="size my-3">
@@ -163,4 +147,49 @@
 
 </main>
 
+<script>
+    var addToCartButton = document.getElementById('add-to-cart-button');
+    addToCartButton.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        // Lấy thông tin sản phẩm
+        var productId = document.getElementById('product-id').value;
+        var productName = document.getElementById('product-name').innerText;
+        var productPrice = document.getElementById('product-price').innerText;
+        var productImage = document.getElementById('product-image').src;
+
+        // Lấy danh sách CartItem từ Session
+        var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+
+        // Tìm kiếm sản phẩm trong danh sách CartItem
+        var existingCartItem = cartItems.find(function (cartItem) {
+            return cartItem.productId === productId;
+        });
+
+        if (existingCartItem) {
+            // Sản phẩm đã tồn tại trong giỏ hàng, tăng số lượng sản phẩm
+            existingCartItem.productQuantity = parseInt(existingCartItem.productQuantity) + 1;
+        } else {
+            // Thêm CartItem mới vào danh sách
+            var cartItem = {
+                productId: productId,
+                productName: productName,
+                productPrice: productPrice,
+                productImage: productImage,
+                productQuantity: 1,
+            };
+            cartItems.push(cartItem);
+        }
+
+        // Lưu danh sách CartItem vào Session
+        sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+        alert("Thêm thành công sản phẩm vào giỏ hàng")
+
+        // Cập nhật số lượng sản phẩm trong giỏ hàng
+        
+    });
+
+   
+
+</script>
 <!-- !start #main-site -->

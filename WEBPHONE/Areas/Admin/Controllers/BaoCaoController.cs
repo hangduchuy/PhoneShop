@@ -21,6 +21,7 @@ namespace WEBPHONE.Areas.Admin.Controllers
         {
             var db = new ShopConnectionDB();
             var data = db.Fetch<dynamic>("SELECT TongTien FROM HoaDon ORDER BY NgayTao DESC");
+            var xValues = ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T12"];
 
             var chartData = new
             {
