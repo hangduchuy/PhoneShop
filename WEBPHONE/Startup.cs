@@ -39,7 +39,7 @@ namespace WEBPHONE
                 user.UserName = "admin@gmail.com";
                 user.Email = "admin@gmail.com";
 
-                string userPWD = "Admin@1234";
+                string userPWD = "Admin@123";
 
                 var chkUser = UserManager.Create(user, userPWD);
 

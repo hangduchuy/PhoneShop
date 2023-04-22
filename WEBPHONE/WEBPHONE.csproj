@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WEBPHONE</RootNamespace>
     <AssemblyName>WEBPHONE</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -175,6 +175,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaoCaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSanPhamAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\MainAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhaSanXuatAdminController.cs" />
@@ -192,6 +193,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BaoCaoBanHang_TheoSanPham.cs" />
+    <Compile Include="Models\BaoCao\mapBaoCaoThongKe.cs" />
     <Compile Include="Models\BUSS\BinhLuanBUS.cs" />
     <Compile Include="Models\BUSS\LoaiSanPhamBUS.cs" />
     <Compile Include="Models\BUSS\NhaSanXuatBUS.cs" />
@@ -2609,6 +2612,8 @@
     <Content Include="Areas\AssetAdmin\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Areas\AssetAdmin\ckeditor\SECURITY.md" />
     <Content Include="Areas\AssetAdmin\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Areas\Admin\Views\BaoCao\Report.cshtml" />
+    <Content Include="Areas\Admin\Views\MainAdmin\Report.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\cart.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
