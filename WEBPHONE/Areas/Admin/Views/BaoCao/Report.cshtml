@@ -3,16 +3,19 @@
     Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
 }
 
+
 <!-- Content Row -->
 <div class="container-fluid">
     <div class="row">
+        @*@Html.DropDownListFor(model => model.Select, ViewBag.Years as SelectList, new { @class = "form-control", onchange = "this.form.submit();" })*@
+
         @*//////////////////////////////////*@
         <!-- Area Chart -->
         <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Doanh Thu</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Doanh Thu năm hiện tại</h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -43,7 +46,7 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Nguồn Doanh Thu</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Doanh thu các năm</h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -62,9 +65,9 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-pie pt-4 pb-2">
-                        <canvas id="myPieChart"></canvas>
+                        <canvas id="myChart2"></canvas>
                     </div>
-                    <div class="mt-4 text-center small">
+                    @*<div class="mt-4 text-center small">
                         <span class="mr-2">
                             <i class="fas fa-circle text-primary"></i> Trực tiếp
                         </span>
@@ -74,17 +77,12 @@
                         <span class="mr-2">
                             <i class="fas fa-circle text-info"></i> Giới Thiệu
                         </span>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Content Row -->
-
-@*<div style="width:70%; display:flex;justify-content:center">
-    <canvas id="myChart"></canvas>
-</div>*@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -97,6 +95,7 @@
         type: 'bar',
         data: chartData,
         options: {
+            maintainAspectRatio: false,
             scales: {
                 yAxes: [{
                     ticks: {
@@ -108,3 +107,23 @@
     });
 </script>
 
+<script>
+
+
+    var ctx2 = document.getElementById('myChart2').getContext('2d');
+    var chartData2 = @Html.Raw(ViewBag.ChartData2);
+
+    var myChart = new Chart(ctx2, {
+        type: 'doughnut',
+        data: chartData2,
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
