@@ -24,7 +24,7 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 THU NHẬP (HÀNG THÁNG)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.TotalMoney.ToString("N0")</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -42,7 +42,7 @@
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 THU NHẬP (HẰNG NĂM)
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.TotalYear.ToString("N0")</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -334,39 +334,7 @@
 <!-- /.container-fluid -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
-<script type="text/javascript">
-    var xValues = ["T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10", "T11", "T12"];
-    var yValues = [15, 49, 44, 24, 125];
-    var barColors = ["red", "green", "blue", "orange", "brown"];
-    va
-    //const labels = Utils.months({ count: 7 });
-    //const data = {
-    //    labels: labels,
-    //    datasets: [{
-    //        label: 'My First Dataset',
-    //        data: [65, 59, 80, 81, 56, 55, 40],
-    //        fill: false,
-    //        borderColor: 'rgb(75, 192, 192)',
-    //        tension: 0.1
-    //    }]
-    //};
-    new Chart("myChart", {
-        type: "line",
-        data: {
-            labels: xValues,
-            datasets: [{
-                borderColor: '#4e73df',
-                data: yValues,
-                //fill: false,
-                tension: 0.1
-            }]
-        },
-        options: {}
-        });
 
-    
-</script>   
-    
 
 
 
